@@ -1,5 +1,5 @@
 from Queue import PriorityQueue
-from simdes.node.message import *
+from simdesim.action import *
 
 class DESNode:
 
@@ -15,7 +15,7 @@ class DESNode:
         self.outbox = []
         self.process_msg_ct = 0
 
-    def _process_timestep(self, timestep):
+    def process_timestep(self, timestep):
         """
         Takes a timestep and processes all messages up
         to and including that timestep
@@ -31,9 +31,9 @@ class DESNode:
                 break
 
             # otherwise we process the msg
-            self.process_message(cur_msg)
+            self.process_action(cur_msg)
 
-    def process_message(self, cur_msg):
+    def process_action(self, cur_action):
 
         self.process_msg_ct += 1
-        print cur_msg[MSG_PAYLOAD]
+        print cur_action[MSG_PAYLOAD]
