@@ -20,7 +20,7 @@ class Coordinator:
     def add_node(self, node_id, node):
         self.node_map[node_id] = node
 
-    def add_message(self, node_id, msg):
+    def add_action(self, node_id, msg):
 
         # get the node out
         node = self.node_map[node_id]

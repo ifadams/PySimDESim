@@ -1,6 +1,7 @@
 # "Constants" for indexing into the payload tuple
-MSG_TIMESTEP = 0
-MSG_PAYLOAD = 1
+ACT_TIMESTEP = 0
+ACT_TARGET = 1
+ACT_PAYLOAD = 2
 
 
 def create_act_tuple(timestep, target_id, payload):
