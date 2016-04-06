@@ -1,4 +1,4 @@
-from Queue import PriorityQueue
+from Queue import PriorityQueue, Empty
 from simdesim.action import *
 
 class DESNode:
@@ -23,7 +23,11 @@ class DESNode:
         """
 
         while True:
-            cur_msg = self.inbox.get()
+            # if theres nothin' in the queue move along
+            try:
+                cur_msg = self.inbox.get(block=False)
+            except Empty:
+                break
 
             # if we've gone past the time step, put it back and break out
             # of the loop

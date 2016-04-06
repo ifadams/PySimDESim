@@ -21,6 +21,7 @@ class MessageNode(DESNode):
 
     def __init__(self, node_id, node_map):
 
+        self.process_msg_ct = 0
         # initialize super class
         DESNode.__init__(self, node_id)
 
@@ -60,24 +61,35 @@ class MessageNode(DESNode):
             self.node_map[dest_node_id].inbox.put(action)
 
 
-
-
 def main():
 
     # initate a coordinator
     my_coord = Coordinator()
 
+    # Get a refernce to the node map from the coordinator
+    # since we're going to hand that off to all of our nodes
+    # so they have a global view
+    coords_node_map = my_coord.node_map
 
-    # add a few nodes
-    node_1 = ()
+    # add a couple nodes
+    node_1 = MessageNode(0, coords_node_map)
+    node_2 = MessageNode(0, coords_node_map)
 
-    # set an initial message in the outbox
+    # Add them to the coordinator
+    my_coord.add_node(1,node_1)
+    my_coord.add_node(2, node_2)
 
+    # create a ping action to node 2, and
+    # put it in the node 1 outbox, and run it at timestep 1
+    ping_payload = (PING, 1)
+    init_ping = create_act_tuple(1, 2, ping_payload)
+    my_coord.add_action(1, init_ping)
 
     # Manually step through a few timesteps
-
-
+    my_coord.next_timestep()
+    my_coord.next_timestep()
+    my_coord.next_timestep()
 
 if __name__ == "__main__":
-    pass
+    main()
 
