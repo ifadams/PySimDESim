@@ -1,8 +1,8 @@
 # PySimDESim
 A simple discrete event simulation framework for teaching and basic modeling. If you're looking for
 something more serious (and vastly more developed) there are plenty of great choices out there! For
-Python based approaches, SimPY can't be beat http://simpy.readthedocs.io/en/latest/ , and for some *very* heavy weight (but gignatically
-powerful) sim check out ROSS https://github.com/carothersc/ROSS
+Python based approaches, SimPY can't be beat http://simpy.readthedocs.io/en/latest/ , and for some *very* heavy weight
+(but gigantically powerful) simulation check out ROSS https://github.com/carothersc/ROSS
 
 In SimDESim There are 3 basic elements: the  coordinator, nodes, and actions. The coordinator
 (also called the master) maintains the current clock tick, and allows 'out of band' actions to be
